@@ -19,5 +19,5 @@ EXPOSE 4200
 
 FROM nginx:alpine
 
-COPY www /usr/share/nginx/html
+COPY /www /usr/share/nginx/html
 
