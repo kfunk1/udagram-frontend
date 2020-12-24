@@ -1,21 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: udagram-frontend
+  name: frontend
   labels:
-    app: udagram-frontend
+    service: frontend
+    api: external
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: udagram-frontend
+      service: frontend
+      api: external
   template:
     metadata:
       labels:
-        app: udagram-frontend
+        service: frontend
+        api: external
     spec:
       containers:
-      - name: udagram-frontend
+      - name: frontend
         image: kbessetteudacity/udagram-frontend
+        imagePullPolicy: Always
         ports:
-        - containerPort: 4200
+        - containerPort: 80

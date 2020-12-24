@@ -8,14 +8,19 @@ WORKDIR /usr/src/app
 # package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+RUN npm ci
+
 RUN npm install
 
-# Copy app source
 COPY . .
 
-# Bind the port that the image will run on
+RUN ionic init
+
+RUN ionic build
+
 EXPOSE 4200
 
-# Define the Docker image's behavior at runtime
-CMD ["npm", "start"]
+FROM nginx:alpine
+
+COPY --from=ionic /usr/src/app/www /usr/share/nginx/html
+COPY --from=ionic /usr/src/app/www /bin
