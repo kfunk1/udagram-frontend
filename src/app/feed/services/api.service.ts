@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 
-const API_HOST = environment.apiFeedHost;
+const API_HOST = environment.apiHost;
 
 @Injectable({
   providedIn: 'root'
